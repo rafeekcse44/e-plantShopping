@@ -6,8 +6,11 @@
  * - Item name and unit price
  * - Dynamic total cost calculation (unit price × quantity)
  * - Quantity adjustment with +/- buttons
- * - Delete/Remove item button
+ * - Delete/Remove item button with Redux integration
  * - Real-time updates via Redux dispatch
+ * 
+ * NOTE: Total cart amount (sum of all items) is calculated and displayed
+ * in the CartPage component (App.jsx) using Redux useSelector and reduce()
  */
 
 import { useDispatch } from "react-redux";
@@ -67,6 +70,10 @@ export default function CartItem({ item }) {
         </button>
         
         {/* Remove item from cart button */}
+        {/* This button dispatches the removeItem action to Redux CartSlice */}
+        {/* removeItem action filters out the item from cart.items array by id */}
+        {/* Item is immediately removed from the cart and cart total updates dynamically */}
+        {/* The CartPage component recalculates total cart amount automatically */}
         <button 
           className="remove-btn"
           onClick={() => dispatch(removeItem(item.id))}
