@@ -205,11 +205,66 @@ nav {
 .cart-item {
   display: flex;
   gap: 12px;
-  align-items: center;
-  padding: 8px 0;
+  align-items: flex-start;
+  padding: 16px;
+  border-bottom: 1px solid #e6efe6;
+  background: #fff;
+  margin-bottom: 8px;
+  border-radius: 4px;
 }
-.cart-body { flex: 1; }
-.cart-actions { display: flex; gap: 8px; }
+.cart-item img {
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+.cart-body { 
+  flex: 1;
+}
+.cart-body h4 {
+  margin: 0 0 8px 0;
+  color: #1b5e20;
+}
+.unit-price,
+.quantity-display,
+.item-total {
+  margin: 4px 0;
+  color: #556;
+  font-size: 0.95rem;
+}
+.item-total {
+  font-weight: 600;
+  color: #217a21;
+}
+.cart-actions { 
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+.qty-btn {
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.qty-btn:hover {
+  background: #1b5e20;
+}
+.remove-btn {
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.remove-btn:hover {
+  background: #b71c1c;
+}
 
 /* About Us Container and Sections */
 .about-us-container {
@@ -294,15 +349,37 @@ nav {
   padding: 24px 16px;
 }
 
-.cart-page h2 {
-  color: #1b5e20;
-  margin-bottom: 24px;
-}
-
 .cart-page h3 {
   color: #333;
   margin: 24px 0 16px 0;
   font-size: 1.3rem;
+}
+
+.cart-total-section {
+  background: linear-gradient(180deg, #f3fff3 0%, #ffffff 100%);
+  border: 2px solid #1b5e20;
+  border-radius: 8px;
+  padding: 24px;
+  margin: 32px 0;
+  text-align: right;
+}
+
+.cart-total {
+  color: #1b5e20;
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+}
+
+.total-amount {
+  color: #d32f2f;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.total-items {
+  color: #556;
+  margin: 8px 0 0 0;
+  font-size: 0.95rem;
 }
 
 .empty-cart {

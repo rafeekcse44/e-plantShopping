@@ -4,17 +4,51 @@ import AboutUs from "./components/AboutUs";
 import ProductList from "./components/ProductList";
 import CartItem from "./components/CartItem";
 
+/**
+ * CartPage Component
+ * 
+ * Displays the complete shopping cart with the following features:
+ * - List of all items in the cart (rendered via CartItem component)
+ * - Dynamic total cart amount calculation
+ * - Total updates in real-time as quantities change or items are removed
+ * - Empty cart message with link to products
+ * - Continue Shopping and Checkout buttons
+ */
 function CartPage() {
+  // Get all items from Redux cart state
   const items = useSelector(state => state.cart.items);
-  const total = items.reduce((sum, i) => sum + i.cost * i.quantity, 0);
+  
+  /**
+   * Calculate total cart amount
+   * Reduces all items by multiplying unit price × quantity for each item
+   * Formula: sum = 0; for each item: sum += (item.cost × item.quantity)
+   * This updates dynamically whenever cart items or quantities change
+   */
+  const total = items.reduce((sum, i) => sum + (i.cost * i.quantity), 0);
+  
+  /**
+   * Alternative calculation breakdown (for clarity):
+   * items.reduce((accumulator, currentItem) => {
+   *   return accumulator + (currentItem.cost * currentItem.quantity)
+   * }, 0);
+   */
 
   return (
     <div className="cart-page">
       <h2>Shopping Cart</h2>
+      
       {items.length > 0 ? (
         <>
+          {/* Render each cart item */}
           {items.map(item => <CartItem key={item.id} item={item} />)}
-          <h3>Total: ${total}</h3>
+          
+          {/* Total cart amount - displays dynamically calculated sum */}
+          <div className="cart-total-section">
+            <h3 className="cart-total">Cart Total: <span className="total-amount">${total.toFixed(2)}</span></h3>
+            <p className="total-items">Items in cart: {items.length}</p>
+          </div>
+          
+          {/* Action buttons: Continue Shopping and Checkout */}
           <div className="cart-actions-buttons">
             <Link to="/products"><button className="btn">Continue Shopping</button></Link>
             <button className="btn primary">Checkout</button>
