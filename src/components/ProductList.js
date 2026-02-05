@@ -1,6 +1,6 @@
 import { plants } from "./data";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/CartSlice";
+import { addItem } from "../redux/CartSlice";
 
 export default function ProductList() {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function ProductList() {
                     <p className="card-desc">{plant.description}</p>
                     <div className="card-footer">
                       <span className="price">${plant.cost}</span>
-                      <button className="btn" onClick={() => dispatch(addToCart(plant))}>
+                      <button className="btn" onClick={() => dispatch(addItem(plant))}>
                         Add to Cart
                       </button>
                     </div>

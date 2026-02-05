@@ -67,6 +67,78 @@ nav {
   border-radius: 8px;
 }
 
+/* Background Image Class for Paradise Nursery Landing Page */
+.background-image {
+  background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.background-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.background-image > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Welcome Section Styles */
+.welcome-section {
+  text-align: center;
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.welcome-title {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+}
+
+.welcome-subtitle {
+  font-size: 1.3rem;
+  color: #f0f0f0;
+  margin-bottom: 32px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.get-started-btn {
+  font-size: 1.1rem;
+  padding: 12px 32px !important;
+  background: #1b5e20 !important;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.get-started-btn:hover {
+  background: #0d3a12 !important;
+}
+
 .section-title {
   margin: 8px 0 16px 0;
   font-size: 1.6rem;
@@ -138,6 +210,131 @@ nav {
 }
 .cart-body { flex: 1; }
 .cart-actions { display: flex; gap: 8px; }
+
+/* About Us Container and Sections */
+.about-us-container {
+  width: 100%;
+  background: #fafaf8;
+}
+
+.about-section,
+.mission-section,
+.services-section,
+.why-us-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 16px;
+  border-bottom: 1px solid #e6efe6;
+}
+
+.about-section h2,
+.mission-section h2,
+.services-section h2,
+.why-us-section h2 {
+  color: #1b5e20;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+}
+
+.about-content,
+.mission-content,
+.why-us-content {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.about-content p,
+.mission-content p,
+.why-us-content p {
+  margin-bottom: 16px;
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+}
+
+.services-list li {
+  margin-bottom: 20px;
+  padding-left: 24px;
+  position: relative;
+  line-height: 1.8;
+  color: #333;
+}
+
+.services-list li:before {
+  content: "🌿";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.why-us-section {
+  background: linear-gradient(180deg, #f3fff3 0%, #fafaf8 100%);
+}
+
+.why-us-content p {
+  margin-bottom: 16px;
+}
+
+.why-us-content strong {
+  color: #1b5e20;
+}
+
+.about-section:last-child,
+.why-us-section {
+  border-bottom: none;
+}
+
+/* Cart Page Styles */
+.cart-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.cart-page h2 {
+  color: #1b5e20;
+  margin-bottom: 24px;
+}
+
+.cart-page h3 {
+  color: #333;
+  margin: 24px 0 16px 0;
+  font-size: 1.3rem;
+}
+
+.empty-cart {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  padding: 32px 0;
+}
+
+.empty-cart a {
+  color: #1b5e20;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.empty-cart a:hover {
+  text-decoration: underline;
+}
+
+.cart-actions-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.cart-actions-buttons a {
+  text-decoration: none;
+}
+
+.cart-actions-buttons button {
+  flex: 1;
+}
 
 @keyframes App-logo-spin {
   from {

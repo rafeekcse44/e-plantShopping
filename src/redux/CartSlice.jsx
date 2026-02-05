@@ -8,27 +8,33 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action) => {
-      const item = state.items.find(i => i.id === action.payload.id);
-      if (item) {
-        item.quantity += 1;
+    addItem: (state, action) => {
+      const payload = action.payload;
+      const existing = state.items.find(i => i.id === payload.id);
+      const qtyToAdd = payload.quantity && Number(payload.quantity) > 0 ? Number(payload.quantity) : 1;
+      if (existing) {
+        existing.quantity = (existing.quantity || 0) + qtyToAdd;
       } else {
-        state.items.push({ ...action.payload, quantity: 1 });
+        state.items.push({ ...payload, quantity: qtyToAdd });
       }
     },
-    increaseQty: (state, action) => {
-      const item = state.items.find(i => i.id === action.payload);
-      item.quantity += 1;
-    },
-    decreaseQty: (state, action) => {
-      const item = state.items.find(i => i.id === action.payload);
-      if (item.quantity > 1) item.quantity -= 1;
-    },
     removeItem: (state, action) => {
-      state.items = state.items.filter(i => i.id !== action.payload);
+      const id = action.payload;
+      state.items = state.items.filter(i => i.id !== id);
+    },
+    updateQuantity: (state, action) => {
+      const { id, quantity } = action.payload;
+      const item = state.items.find(i => i.id === id);
+      if (!item) return;
+      const q = Number(quantity);
+      if (Number.isNaN(q) || q <= 0) {
+        state.items = state.items.filter(i => i.id !== id);
+      } else {
+        item.quantity = q;
+      }
     }
   }
 });
 
-export const { addToCart, increaseQty, decreaseQty, removeItem } = cartSlice.actions;
+export const { addItem, removeItem, updateQuantity } = cartSlice.actions;
 export default cartSlice.reducer;
